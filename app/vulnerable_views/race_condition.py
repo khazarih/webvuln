@@ -1,6 +1,10 @@
 from app import app
 from flask import render_template, request, flash, redirect
-from app.vulnerable_views.utils import UserBankAccount, one_transfer_at_a_time, transfer_amount
+from app.vulnerable_views.utils import (
+    UserBankAccount,
+    one_transfer_at_a_time,
+    transfer_amount,
+)
 import threading
 
 me = UserBankAccount("Khazar", 104)
@@ -8,8 +12,8 @@ me = UserBankAccount("Khazar", 104)
 users = [
     UserBankAccount("User1"),
     UserBankAccount("User2"),
-    UserBankAccount("User2"),
-    UserBankAccount("User2"),
+    UserBankAccount("User3"),
+    UserBankAccount("User4"),
 ]
 
 

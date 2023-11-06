@@ -8,4 +8,4 @@ def index():
     return render_template("index.html")
 
 
-from app.vulnerable_views import race_condition
+from app.vulnerable_views import race_condition, missing_csrf
