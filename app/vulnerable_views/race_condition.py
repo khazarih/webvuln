@@ -1,6 +1,6 @@
 from app import app
 from flask import render_template, request, flash, redirect
-from utils import UserBankAccount, transfer, transfer_amount
+from app.vulnerable_views.utils import UserBankAccount, one_transfer_at_a_time, transfer_amount
 import threading
 
 me = UserBankAccount("Khazar", 104)
@@ -25,7 +25,6 @@ def race_condition_get():
 
 @app.post("/race-condition")
 def race_condition_post():
-    global transfer
     amount = request.form.get("amount")
     to = request.form.get("to")
 
@@ -60,7 +59,7 @@ def race_condition_post():
             flash("You need to select a contact to transfer money", "danger")
         else:
             flash("Transfer is successfull", "success")
-            transfer = True
+            one_transfer_at_a_time.transfer = True
     else:
         flash("Please fill the inputs to transfer money", "danger")
 

@@ -1,15 +1,21 @@
 from uuid import uuid4
 
 
-transfer = True
+class OneTransferAtATime:
+    def __init__(self) -> None:
+        self.transfer = True
+
+
+one_transfer_at_a_time = OneTransferAtATime()
 
 
 def transfer_amount(me, to, amount):
-    global transfer
-    if transfer:
+    global one_transfer_at_a_time
+
+    if one_transfer_at_a_time.transfer:
         me.remove_amount(int(amount))
         to.add_amount(int(amount))
-        transfer = False
+        one_transfer_at_a_time.transfer = False
 
 
 class UserBankAccount:
