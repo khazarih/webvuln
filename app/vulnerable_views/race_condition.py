@@ -1,23 +1,7 @@
 from app import app
 from flask import render_template, request, flash, redirect
-from uuid import uuid4
+from utils import UserBankAccount, transfer, transfer_amount
 import threading
-import time
-
-
-class UserBankAccount:
-    def __init__(self, name, balance=0) -> None:
-        self.id = uuid4()
-        self.name = name
-        self.balance = balance
-
-    def add_amount(self, amount):
-        self.balance += amount
-
-    def remove_amount(self, amount):
-        if (self.balance - amount) >= 0:
-            self.balance -= amount
-
 
 me = UserBankAccount("Khazar", 104)
 
@@ -27,17 +11,6 @@ users = [
     UserBankAccount("User2"),
     UserBankAccount("User2"),
 ]
-
-
-transfer = True
-
-
-def transfer_amount(me, to, amount):
-    global transfer
-    if transfer:
-        me.remove_amount(int(amount))
-        to.add_amount(int(amount))
-        transfer = False
 
 
 @app.get("/race-condition")
