@@ -2,6 +2,7 @@ from app import app
 from flask import render_template, request, flash, redirect
 from uuid import uuid4
 import threading
+import time
 
 
 class UserBankAccount:
@@ -16,8 +17,6 @@ class UserBankAccount:
     def remove_amount(self, amount):
         if (self.balance - amount) >= 0:
             self.balance -= amount
-        else:
-            raise ValueError
 
 
 me = UserBankAccount("Khazar", 104)
@@ -84,14 +83,11 @@ def race_condition_post():
                 for thread in threads:
                     thread.join()
 
-        except ValueError:
-            flash("Insufficient funds", "danger")
         except IndexError:
             flash("You need to select a contact to transfer money", "danger")
         else:
             flash("Transfer is successfull", "success")
             transfer = True
-
     else:
         flash("Please fill the inputs to transfer money", "danger")
 
