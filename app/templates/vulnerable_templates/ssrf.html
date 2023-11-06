@@ -1,0 +1,29 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<h1>SSRF</h1>
+
+
+<form method="POST">
+    <br>
+    <h4>Type url image to display</h4>
+    <br>
+
+    {% if content %}
+    <img width="100" height="100" src="data:image/png;base64,{{content}}">
+    {% endif %}
+
+    <br>
+    <br>
+    <br>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Amount</label>
+        <input type="url" name="url" class="form-control" id="" placeholder="https://example.com/image.jpg">
+    </div>
+    <br>
+    <button class="btn btn-dark px-5" type="submit">Send</button>
+</form>
+
+
+{% endblock content %}

@@ -23,7 +23,7 @@ def csrf_get():
         "users": [(str(user.id), user.name, str(user.balance)) for user in users],
     }
 
-    return render_template("vulnerable_templates/missing_csrf.html", **context)
+    return render_template("vulnerable_templates/csrf.html", **context)
 
 
 @app.post("/csrf")
