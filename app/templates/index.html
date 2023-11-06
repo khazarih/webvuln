@@ -1,0 +1,29 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<h1>Vulnerabilities</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Port Swigger</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row"><a href="/race-condition">Race condition</a></th>
+            <td><a
+                    href="https://portswigger.net/web-security/race-conditions">https://portswigger.net/web-security/race-conditions</a>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"><a href="/race-condition">CSRF</a></th>
+            <td><a href="https://portswigger.net/web-security/csrf">https://portswigger.net/web-security/csrf</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+{% endblock content %}
